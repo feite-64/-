@@ -3,7 +3,7 @@ import service from ".";
 // 登录列表接口
 export function login(data: LoginForm) {
   return service({
-    url: '/login',
+    url: 'http://localhost:3000/users/login',
     method: 'post',
     data
   })
