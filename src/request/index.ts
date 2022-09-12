@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { ElMessage } from 'element-plus'
 const service = axios.create({
   baseURL:
     'https://www.fastmock.site/mock/e81d3e223d583d40162d6f2d61b12866/api',
@@ -18,11 +19,12 @@ service.interceptors.request.use((config) => {
 // 响应拦截
 service.interceptors.response.use(
   (res) => {
-    const code: number = res.data.code
+    const { code, message } = res.data
     // if (code === 400) {
     //   return Promise.reject(res.data)
     // }
-    if (code != 200 && code != 0) {
+    if (code !== 200 && code !== 0) {
+      ElMessage.error(message)
       return Promise.reject(res.data)
     }
     return Promise.resolve(res.data)
