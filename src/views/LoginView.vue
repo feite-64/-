@@ -56,7 +56,7 @@ export default defineComponent({
     const router = useRouter();
     const submitForm = (formEl: FormInstance | undefined) => {
       if (!formEl) return;
-      // 表单验证 
+      // 表单验证  
       // valid为boolean指
       formEl.validate((valid) => {
         if (valid) {
@@ -64,8 +64,6 @@ export default defineComponent({
           // 接受请求数据
           login(data.ruleForm)
             .then((res) => {
-              console.log(1);
-
               console.log(res);
               // 保存数据到本地
               localStorage.setItem("token", res.data.token);
